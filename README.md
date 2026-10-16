@@ -88,13 +88,6 @@ The first screen you see. Everything is built to work with **touch** *and* a **T
 | 📋 **Video slots** | One card per video — shows the chosen **file name** and a **SELECT / CHANGE** button |
 | ▶️ **START PLAYING** | Greyed out until every slot has a video, and counts down: *"SELECT 2 MORE VIDEOS"* |
 
-### 🧠 Nice little touches
-
-- ♻️ The app **remembers your layout choice for each video count** — switch from 3 to 2 and back, and your 3-video layout is still selected.
-- ✅ Your **picked videos stay put** when you change the count or layout.
-- 🎯 On a TV remote, **focus returns to where you were** after a list refreshes or a file is picked.
-- 🔙 Pressing **Back** on the player brings you back here with everything intact.
-
 ---
 
 ## 🧱 Layouts
@@ -181,26 +174,6 @@ All controls **float transparently over the video** — there's no black bar blo
 
 ---
 
-## 🎛️ Per-Video Controls
-
-Every video tile has the same set of controls.
-
-### ▶️ Core controls
-
-| Control | What it does |
-|---|---|
-| ⏯️ **Play / Pause** | The big round button (centre of the tile, or bottom-left on small tiles) |
-| 📏 **Progress bar** | Drag to seek; shows **elapsed** and **total** time |
-
-### 🔊 Volume
-
-| | |
-|---|---|
-| 🎚️ **Slider** | **0–100%**, with a live **percentage** readout |
-| 🔇 **Mute button** | Mutes instantly — and **remembers your level** so un-muting restores it |
-| 🎬 **Default** | Every video starts at **0%** so four soundtracks never collide |
-| 🧠 **Smart saving** | At 0% the video's **audio decoder is switched off** entirely, saving resources |
-
 ### 🧰 The button grid
 
 | Button | Name | What it does |
@@ -221,15 +194,6 @@ Every video tile has the same set of controls.
 | **Double-tap** | Reset zoom |
 
 > 🎯 Pinch-zoom starts correctly **even if one finger lands on a button**, and zoom only affects the video — the controls never zoom with it.
-
-### 📐 Smart on small screens
-
-Four tiles on a phone means small tiles, so the controls adapt automatically:
-
-- 🧩 The **button grid wraps** into as many rows as the tile's width allows.
-- ▶️ If the buttons would crowd the centre play button, **play/pause moves to the bottom-left**.
-- 🏷️ The **volume percentage label** hides on narrow tiles.
-- ⏱️ The **time labels** hide on very narrow tiles so the progress bar keeps its room.
 
 ---
 
