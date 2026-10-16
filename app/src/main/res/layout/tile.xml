@@ -1,0 +1,176 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.example.quadplayer.TileFrame xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/videoFrame"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#000000"
+    android:clipChildren="true"
+    android:defaultFocusHighlightEnabled="false"
+    android:descendantFocusability="afterDescendants"
+    android:focusable="true">
+
+    <!-- Fit/fill, rotation and pinch-zoom are applied to this view only -->
+    <androidx.media3.ui.PlayerView
+        android:id="@+id/playerView"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:descendantFocusability="blocksDescendants"
+        android:focusable="false"
+        app:resize_mode="fit"
+        app:surface_type="texture_view"
+        app:use_controller="false" />
+
+    <!-- Everything in here auto-hides after 5 s and returns on touch / remote key -->
+    <FrameLayout
+        android:id="@+id/overlay"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <!-- Shown only while this tile has remote (D-pad) focus -->
+        <View
+            android:id="@+id/focusRing"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="@drawable/bg_focus_ring"
+            android:visibility="gone" />
+
+        <!-- This tile's own controller (play/pause + progress), transparent layout -->
+        <androidx.media3.ui.PlayerControlView
+            android:id="@+id/controls"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            app:controller_layout_id="@layout/tile_controller"
+            app:show_timeout="0" />
+
+        <!-- Control cluster: volume slider on top, wrapping button grid below -->
+        <LinearLayout
+            android:id="@+id/volumeRow"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="top|end"
+            android:layout_margin="6dp"
+            android:gravity="end"
+            android:orientation="vertical">
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:gravity="center_vertical"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:id="@+id/volumeLabel"
+                    android:layout_width="34dp"
+                    android:layout_height="wrap_content"
+                    android:gravity="end"
+                    android:shadowColor="#000000"
+                    android:shadowDx="1"
+                    android:shadowDy="1"
+                    android:shadowRadius="3"
+                    android:textColor="@color/cyan"
+                    android:textSize="11sp"
+                    android:textStyle="bold" />
+
+                <SeekBar
+                    android:id="@+id/volumeSeek"
+                    android:layout_width="120dp"
+                    android:layout_height="36dp"
+                    android:background="@drawable/bg_focus_box"
+                    android:focusable="true"
+                    android:max="100"
+                    android:progressBackgroundTint="#66FFFFFF"
+                    android:progressTint="@color/cyan"
+                    android:thumbTint="@color/cyan" />
+            </LinearLayout>
+
+            <com.example.quadplayer.ButtonFlow
+                android:id="@+id/buttonFlow"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="2dp">
+
+                <ImageButton
+                    android:id="@+id/muteBtn"
+                    android:layout_width="36dp"
+                    android:layout_height="36dp"
+                    android:background="@drawable/bg_icon_button"
+                    android:contentDescription="Mute / unmute"
+                    android:focusable="true"
+                    android:padding="8dp"
+                    android:scaleType="fitCenter" />
+
+                <ImageButton
+                    android:id="@+id/loopBtn"
+                    android:layout_width="36dp"
+                    android:layout_height="36dp"
+                    android:background="@drawable/bg_icon_button"
+                    android:contentDescription="Loop mode"
+                    android:focusable="true"
+                    android:padding="8dp"
+                    android:scaleType="fitCenter" />
+
+                <TextView
+                    android:id="@+id/speedBtn"
+                    android:layout_width="36dp"
+                    android:layout_height="36dp"
+                    android:background="@drawable/bg_icon_button"
+                    android:clickable="true"
+                    android:contentDescription="Playback speed"
+                    android:focusable="true"
+                    android:gravity="center"
+                    android:includeFontPadding="false"
+                    android:maxLines="1"
+                    android:textColor="@color/cyan"
+                    android:textSize="10sp"
+                    android:textStyle="bold" />
+
+                <ImageButton
+                    android:id="@+id/rotateBtn"
+                    android:layout_width="36dp"
+                    android:layout_height="36dp"
+                    android:background="@drawable/bg_icon_button"
+                    android:contentDescription="Rotate video"
+                    android:focusable="true"
+                    android:padding="8dp"
+                    android:scaleType="fitCenter" />
+
+                <ImageButton
+                    android:id="@+id/zoomBtn"
+                    android:layout_width="36dp"
+                    android:layout_height="36dp"
+                    android:background="@drawable/bg_icon_button"
+                    android:contentDescription="Fill screen / fit screen"
+                    android:focusable="true"
+                    android:padding="8dp"
+                    android:scaleType="fitCenter" />
+
+                <ImageButton
+                    android:id="@+id/swapBtn"
+                    android:layout_width="36dp"
+                    android:layout_height="36dp"
+                    android:background="@drawable/bg_icon_button"
+                    android:contentDescription="Swap position"
+                    android:focusable="true"
+                    android:padding="8dp"
+                    android:scaleType="fitCenter" />
+            </com.example.quadplayer.ButtonFlow>
+        </LinearLayout>
+    </FrameLayout>
+
+    <!-- Shown on every OTHER tile while choosing where to swap a video to -->
+    <TextView
+        android:id="@+id/swapTarget"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@drawable/bg_swap_target"
+        android:clickable="true"
+        android:focusable="true"
+        android:gravity="center"
+        android:letterSpacing="0.1"
+        android:text="SWAP HERE"
+        android:textColor="@color/cyan"
+        android:textSize="18sp"
+        android:textStyle="bold"
+        android:visibility="gone" />
+</com.example.quadplayer.TileFrame>
