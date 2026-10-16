@@ -16,7 +16,9 @@ Sub-Etha OmniView is a multi-video splitscreen player for Android phones, tablet
 *Created by [burnsymbol.com](https://burnsymbol.com)*
 
 </div>
-
+<div align="center">
+<img src="https://iili.io/njaZUrv.png" alt="Description" style="width: 25%;">
+</div>
 ---
 
 ## 📖 Table of Contents
